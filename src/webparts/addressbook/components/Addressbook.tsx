@@ -3,7 +3,7 @@ import { Component } from "react";
 import "./Addressbook.scss";
 import Header from "./Header";
 import NavBar from "./NavBar";
-import { ApiProvider, Contact } from "../api provider/api_provider";
+import { ApiProvider, Contact } from "../CRUD Operations/CRUD";
 import ContactDetails from "./PersonDetails";
 import ContactCardList from "./ContactList";
 import AddContactDialog from "./Contacts";

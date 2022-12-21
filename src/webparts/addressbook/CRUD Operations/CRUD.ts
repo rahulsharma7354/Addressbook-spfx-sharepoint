@@ -18,6 +18,35 @@ export class ApiProvider {
         console.log(listUrl);
     }
 
+    static async getAllContacts(context: WebPartContext) {
+        var requestInit = {
+            headers: {
+                'Accept': 'application/json;odata=nometadata',
+                'odata-version': ''
+            }
+        };
+        return new Promise<any>((resolve: (data: any) => void, reject: (error: any) => void): void => {
+            context.spHttpClient.get(context.pageContext.web.absoluteUrl + `/_api/web/lists/GetByTitle('Contacts')/items`, SPHttpClient.configurations.v1, requestInit).then((response: SPHttpClientResponse) => {
+                return response.json().then((res) => {
+                    if (!response.ok) {
+                        reject({
+                            status: response.status ? response.status.toString() : "",
+                            message: (res.error.message && res.error.message.value) || 'Request Failed'
+                        });
+                    }
+                    else {
+                        resolve(res);
+                    }
+                });
+            }).catch((e: any) => {
+                reject({
+                    status: "",
+                    message: 'Request Failed'
+                });
+            });
+        });
+    }
+    
     static createContact(contact: Contact, context: WebPartContext, update: Function): void {
         const body: string = JSON.stringify({
             // 'Key': contact.key,
@@ -54,35 +83,6 @@ export class ApiProvider {
             }).catch(error => {
                 console.log(error);
             });
-    }
-
-    static async getAllContacts(context: WebPartContext) {
-        var requestInit = {
-            headers: {
-                'Accept': 'application/json;odata=nometadata',
-                'odata-version': ''
-            }
-        };
-        return new Promise<any>((resolve: (data: any) => void, reject: (error: any) => void): void => {
-            context.spHttpClient.get(context.pageContext.web.absoluteUrl + `/_api/web/lists/GetByTitle('Contacts')/items`, SPHttpClient.configurations.v1, requestInit).then((response: SPHttpClientResponse) => {
-                return response.json().then((res) => {
-                    if (!response.ok) {
-                        reject({
-                            status: response.status ? response.status.toString() : "",
-                            message: (res.error.message && res.error.message.value) || 'Request Failed'
-                        });
-                    }
-                    else {
-                        resolve(res);
-                    }
-                });
-            }).catch((e: any) => {
-                reject({
-                    status: "",
-                    message: 'Request Failed'
-                });
-            });
-        });
     }
 
     static deleteContact(context: WebPartContext, key: string, update: Function) {

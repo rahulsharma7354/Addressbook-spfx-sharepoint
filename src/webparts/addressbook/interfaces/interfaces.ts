@@ -1,5 +1,5 @@
 import { WebPartContext } from "@microsoft/sp-webpart-base";
-import { Contact } from "../api provider/api_provider";
+import { Contact } from "../CRUD Operations/CRUD";
 
 interface DialogData {
     handleCancelAdd: Function;
