@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "19.1.0",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.4.1"
+    },
+    "version": "1.16.0",
+    "libraryName": "address-book-web-part",
+    "libraryId": "22ef6152-7940-4265-b0e6-17bc9477e8ef",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "address-book-web-part",
+    "solutionShortDescription": "address-book-web-part description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

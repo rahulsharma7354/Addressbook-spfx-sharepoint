@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "address-book-web-part-client-side-solution",
+    "id": "22ef6152-7940-4265-b0e6-17bc9477e8ef",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.16.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "address-book-web-part description"
+      },
+      "longDescription": {
+        "default": "address-book-web-part description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "address-book-web-part Feature",
+        "description": "The feature that activates elements of the address-book-web-part solution.",
+        "id": "fd763335-5d8d-4fd3-9580-09d69e199cde",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/address-book-web-part.sppkg"
+  }
+}
