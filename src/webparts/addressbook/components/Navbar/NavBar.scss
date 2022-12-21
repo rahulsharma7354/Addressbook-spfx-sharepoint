@@ -1,0 +1,19 @@
+.bar {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px 0px 0px 1vh;
+    overflow: hidden;
+    background-color: #333;
+    height: 3vh;
+    li.icon {
+        float: right;
+        line-height: 3vh;
+        vertical-align: middle;
+        padding: 0px;
+        padding-right: 10px;
+      }
+      img.icon {
+        height: 2vh;
+        width: 2vh;
+      }
+  }

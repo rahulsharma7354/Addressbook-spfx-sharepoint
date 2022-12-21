@@ -1,12 +1,12 @@
 import * as React from "react";
 import { Component } from "react";
 import "./Addressbook.scss";
-import Header from "./Header";
-import NavBar from "./NavBar";
+import Header from "./Header/Header";
+import NavBar from "./Navbar/NavBar";
 import { ApiProvider, Contact } from "../CRUD Operations/CRUD";
-import ContactDetails from "./PersonDetails";
-import ContactCardList from "./ContactList";
-import AddContactDialog from "./Contacts";
+import ContactDetails from "./Body/PersonDetails";
+import ContactCardList from "./Body/ContactList";
+import AddContactDialog from "./Body/Contacts";
 import DialogData, { ContactCRUDProps } from "../interfaces/interfaces";
 import { WebPartContext } from "@microsoft/sp-webpart-base";
 

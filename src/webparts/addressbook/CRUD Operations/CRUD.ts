@@ -49,7 +49,6 @@ export class ApiProvider {
     
     static createContact(contact: Contact, context: WebPartContext, update: Function): void {
         const body: string = JSON.stringify({
-            // 'Key': contact.key,
             'Title': contact.name,
             'Email': contact.email,
             'Mobile': contact.mobile,
@@ -111,7 +110,6 @@ export class ApiProvider {
 
     static updateContact(context: WebPartContext, contact: Contact, update: Function): void {
         const body: string = JSON.stringify({
-            // 'Key': contact.key.toString(),
             'Title': contact.name,
             'Email': contact.email,
             'Mobile': contact.mobile,

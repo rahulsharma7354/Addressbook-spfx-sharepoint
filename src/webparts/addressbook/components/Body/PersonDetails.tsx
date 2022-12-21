@@ -1,7 +1,7 @@
-import "./Addressbook.scss";
+import "../Addressbook.scss";
 import * as React from "react";
 import { Component } from "react";
-import { ApiProvider, Contact } from "../CRUD Operations/CRUD";
+import { ApiProvider, Contact } from "../../CRUD Operations/CRUD";
 import { WebPartContext } from "@microsoft/sp-webpart-base";
 import deleteIcon from "../assets/delete2.png";
 import editIcon from "../assets/edit1.jpg";

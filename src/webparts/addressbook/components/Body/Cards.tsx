@@ -1,7 +1,7 @@
-import "./Addressbook.scss";
+import "../Addressbook.scss";
 import * as React from "react";
 import { Component } from "react";
-import { Contact } from "../CRUD Operations/CRUD";
+import { Contact } from "../../CRUD Operations/CRUD";
 
 class ContactCard extends Component<{
   contact: Contact;

@@ -1,9 +1,9 @@
-import "./Addressbook.scss";
+import "../Addressbook.scss";
 import * as React from "react";
 import { Component } from "react";
-import { ApiProvider, Contact } from "../CRUD Operations/CRUD";
+import { ApiProvider, Contact } from "../../CRUD Operations/CRUD";
 import { PrimaryButton } from "@fluentui/react";
-import DialogData, { ContactDataState } from "../interfaces/interfaces";
+import DialogData, { ContactDataState } from "../../interfaces/interfaces";
 
 class AddContactDialog extends Component<
   {
