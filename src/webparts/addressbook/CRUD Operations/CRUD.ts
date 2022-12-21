@@ -2,22 +2,6 @@ import { WebPartContext } from "@microsoft/sp-webpart-base";
 import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
 
 export class ApiProvider {
-    public checkListExistence(context: WebPartContext): void {
-        const listUrl = context.pageContext.web.absoluteUrl + "/_api/web/lists/GetByTitle('Contacts')";
-
-        context.spHttpClient.get(listUrl, SPHttpClient.configurations.v1).then((response: SPHttpClientResponse) => {
-            if (response.status == 200) {
-                console.log("List Found");
-                return;
-            } else if (response.status === 404) {
-                console.log("Not Found");
-                return;
-            }
-        });
-
-        console.log(listUrl);
-    }
-
     static async getAllContacts(context: WebPartContext) {
         var requestInit = {
             headers: {
@@ -45,6 +29,21 @@ export class ApiProvider {
                 });
             });
         });
+    }
+    public checkListExistence(context: WebPartContext): void {
+        const listUrl = context.pageContext.web.absoluteUrl + "/_api/web/lists/GetByTitle('Contacts')";
+
+        context.spHttpClient.get(listUrl, SPHttpClient.configurations.v1).then((response: SPHttpClientResponse) => {
+            if (response.status == 200) {
+                console.log("List Found");
+                return;
+            } else if (response.status === 404) {
+                console.log("Not Found");
+                return;
+            }
+        });
+
+        console.log(listUrl);
     }
     
     static createContact(contact: Contact, context: WebPartContext, update: Function): void {
