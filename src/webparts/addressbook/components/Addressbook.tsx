@@ -25,7 +25,7 @@ export default class Addressbook extends Component<ContactCRUDProps, any> {
     this.setContacts = this.setContacts.bind(this);
 
     let apiProvider = new ApiProvider();
-    apiProvider.checkListExistence(this.props.context);
+    apiProvider.checkExistence(this.props.context);
   }
 
   handleAddDialog() {
@@ -56,7 +56,7 @@ export default class Addressbook extends Component<ContactCRUDProps, any> {
 
   setContacts(context: WebPartContext) {
     let contacts: Array<Contact> = [];
-    ApiProvider.getAllContacts(context).then((data) => {
+    ApiProvider.getContacts(context).then((data) => {
       data.value.map((item: any, index: number) => {
         let contact: Contact = {
           key: item.ID ?? "",

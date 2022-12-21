@@ -1,7 +1,7 @@
 import "../Addressbook.scss";
 import * as React from 'react';
 import { Component } from "react";
-import blogIcon from "../assets/blog-icon.png";
+import blogIcon from "../../assets/blog-icon.png";
 
 class NavBar extends Component<{ handleDialog: Function }> {
   constructor(props: any) {

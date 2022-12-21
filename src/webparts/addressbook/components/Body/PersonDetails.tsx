@@ -3,8 +3,8 @@ import * as React from "react";
 import { Component } from "react";
 import { ApiProvider, Contact } from "../../CRUD Operations/CRUD";
 import { WebPartContext } from "@microsoft/sp-webpart-base";
-import deleteIcon from "../assets/delete2.png";
-import editIcon from "../assets/edit1.jpg";
+import deleteIcon from "../../assets/delete2.png";
+import editIcon from "../../assets/edit1.jpg";
 
 class ContactDetails extends Component<
   {

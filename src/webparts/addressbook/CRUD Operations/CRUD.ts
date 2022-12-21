@@ -2,7 +2,23 @@ import { WebPartContext } from "@microsoft/sp-webpart-base";
 import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
 
 export class ApiProvider {
-    static async getAllContacts(context: WebPartContext) {
+    public checkExistence(context: WebPartContext): void {
+        const listUrl = context.pageContext.web.absoluteUrl + "/_api/web/lists/GetByTitle('Contacts')";
+
+        context.spHttpClient.get(listUrl, SPHttpClient.configurations.v1).then((response: SPHttpClientResponse) => {
+            if (response.status == 200) {
+                console.log("List Found");
+                return;
+            } else if (response.status === 404) {
+                console.log("Not Found");
+                return;
+            }
+        });
+
+        console.log(listUrl);
+    }
+    
+    static async getContacts(context: WebPartContext) {
         var requestInit = {
             headers: {
                 'Accept': 'application/json;odata=nometadata',
@@ -30,24 +46,10 @@ export class ApiProvider {
             });
         });
     }
-    public checkListExistence(context: WebPartContext): void {
-        const listUrl = context.pageContext.web.absoluteUrl + "/_api/web/lists/GetByTitle('Contacts')";
 
-        context.spHttpClient.get(listUrl, SPHttpClient.configurations.v1).then((response: SPHttpClientResponse) => {
-            if (response.status == 200) {
-                console.log("List Found");
-                return;
-            } else if (response.status === 404) {
-                console.log("Not Found");
-                return;
-            }
-        });
-
-        console.log(listUrl);
-    }
-    
     static createContact(contact: Contact, context: WebPartContext, update: Function): void {
         const body: string = JSON.stringify({
+        
             'Title': contact.name,
             'Email': contact.email,
             'Mobile': contact.mobile,
@@ -56,21 +58,22 @@ export class ApiProvider {
             'Address': contact.address
         });
         console.log(body);
-        context.spHttpClient.post(`${context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('Contacts')/items`,
-        SPHttpClient.configurations.v1, {
-        headers: {
-          'Accept': 'application/json;odata=nometadata',
-          'Content-type': 'application/json;odata=nometadata',
-          'odata-version': ''
-        },
-        body: body
-      })
+        context.spHttpClient.post(`${context.pageContext.web.absoluteUrl}/_api/web/lists/GetByTitle('Contacts')/items`,
+            SPHttpClient.configurations.v1, {
+            headers: {
+                'Accept': 'application/json;odata=nometadata',
+                'Content-type': 'application/json;odata=nometadata',
+                'odata-version': ''
+            },
+            body: body
+        })
             .then((response: SPHttpClientResponse) => {
                 if (response.ok) {
                     response.json().then((responseJSON) => {
                         console.log(responseJSON);
                         alert(`Contact created successfully with ID: ${responseJSON.ID}`);
                         update(context);
+
                     });
                 } else {
                     response.json().then((responseJSON) => {
@@ -82,6 +85,7 @@ export class ApiProvider {
                 console.log(error);
             });
     }
+
 
     static deleteContact(context: WebPartContext, key: string, update: Function) {
         context.spHttpClient.post(`${context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('Contacts')/items(${key})`,
